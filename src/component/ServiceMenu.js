@@ -35,7 +35,6 @@ const Menu = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	cursor: pointer;	// will change in <Link>
 	img {
 		width: 36px;
 		height: 36px;

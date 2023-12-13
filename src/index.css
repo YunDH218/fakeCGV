@@ -10,6 +10,8 @@ code {
     monospace;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+
 @font-face {
     font-family: 'JejuGothic';
     src: url('./resource/font/JejuGothic.ttf') format('truetype');

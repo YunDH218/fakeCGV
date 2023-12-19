@@ -6,7 +6,7 @@ import my_page_icon from '../resource/image/my_page_icon.png';
 export default function ServiceMenu () {
 	return (
 		<ServiceMenuBox>
-			<Menu>
+			<Menu href='/auth/signin'>
 				<img src={sign_in_icon} alt='sign in' />
 				SIGN IN
 			</Menu>
@@ -28,8 +28,9 @@ const ServiceMenuBox = styled.div`
 	justify-content: space-between;
 `
 
-const Menu = styled.div`
+const Menu = styled.a`
 	color: #666666;
+	text-decoration: none;
 	font-size: 12px;
 	display: flex;
 	flex-direction: column;

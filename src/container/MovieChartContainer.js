@@ -22,6 +22,8 @@ export default function MovieChartContainer () {
 				<SwiperSlide><MovieTile /></SwiperSlide>
 				<SwiperSlide><MovieTile /></SwiperSlide>
 				<SwiperSlide><MovieTile /></SwiperSlide>
+				<SwiperSlide><MovieTile /></SwiperSlide>
+				<SwiperSlide><MovieTile /></SwiperSlide>
 			</Swiper>
 		</MovieChartContainerBox>
 	);

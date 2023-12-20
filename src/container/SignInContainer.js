@@ -12,6 +12,9 @@ export default function SignInContainer () {
 			<p className="info">{info}</p>
 			<input className="id-input" type="text" />
 			<input className="pw-input" type="text" />
+			<div className="submit-button"></div>
+			<p><input id="StaySignedIn" type="checkbox" /><label for="StaySignedIn">Stay Signed in</label></p>
+			<p>Forgot your <a href="/">password</a> or <a href="/">username</a>?</p>
 		</SignInContainerBox>
 	);
 }
@@ -29,6 +32,7 @@ const SignInContainerBox = styled.div`
 	}
 	
 	input[type="text"] {
+		color: #666;
 		width: 135px;
 		height: 35px;
 		padding-left: 40px;
@@ -43,5 +47,36 @@ const SignInContainerBox = styled.div`
 	
 	.pw-input {
 		background: url(${PW_before}) 10px 10px no-repeat;
+	}
+	
+	.submit-button {
+		width: 135px;
+		height: 35px;
+		background: #f00;
+		cursor: pointer;
+		
+		&:before {
+			content: 'SIGN IN';
+			position: relative;
+			top: 1px;
+			left: 1px;
+			display: block;
+			color: #fff;
+			text-align: center;
+			line-height: 31px;
+			width: 131px;
+			height: 31px;
+			background: #f00;
+			border: solid 1px #fff;
+		}
+	}
+	
+	label[for="StaySignedIn"] {
+		position: relative;
+		top: -2px;
+	}
+	
+	p a {
+		color: #666;
 	}
 `;

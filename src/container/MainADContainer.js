@@ -10,7 +10,7 @@ export default function MainADContainer () {
 				<p>
 					Free POPCORN<br />
 					for 3 times in a Year<br />
-					Only to <p style={{"color": "#f3b", "display": "inline"}}>LG U+</p> Members
+					Only to <span style={{"color": "#f3b"}}>LG U+</span> Members
 				</p>
 			</Wrapper>
 		</MainADContainerBox>

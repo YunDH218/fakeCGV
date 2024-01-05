@@ -14,13 +14,8 @@ export default function SignInContainer () {
 	const [ID, setID] = useState("");
 	const [PW, setPW] = useState("");
 	
-	const handleIDChange = e => {
-		setID(e.target.value);
-	}
-	
-	const handlePWChange = e => {
-		setPW(e.target.value);
-	}
+	const handleIDChange = e => { setID(e.target.value); }
+	const handlePWChange = e => {	setPW(e.target.value); }
 	
 	const handleButtonClick = e => {
 		if (PW.length === 0) setInfo({

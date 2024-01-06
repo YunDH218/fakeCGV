@@ -1,9 +1,11 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import submitImg from '../resource/image/submit-button.png';
 import calendarImg from '../resource/image/calendar_icon.png';
 
 export default function RegisterContainer () {
+
+	const warningRef = useRef(null);
 	
 	const [user, setUser] = useState("");
 	const [pass, setPass] = useState("");
@@ -11,7 +13,13 @@ export default function RegisterContainer () {
 	const [phone, setPhone] = useState("");
 	const [birth, setBirth] = useState("");
 	const [gender, setGender] = useState();
-	const [message, setMessage] = useState("");
+	const [warning, setWarning] = useState("");
+
+	const showWarning = async warningMessage => {
+		setWarning(warningMessage);
+		warningRef.current.classList.remove("hidden");
+		setTimeout(()=>{warningRef.current.classList.add("hidden");}, 3000);
+	}
 
 	const handleGenderFocus = e => {
 		e.target.innerText === "male" && setGender(true);
@@ -35,36 +43,37 @@ export default function RegisterContainer () {
 		
 		/* username validation */
 		if (user.length < 5) {
-			setMessage("name must be longer than 5 characters.");
+			showWarning("name must be longer than 5 characters.");
+			
 			return;
 		}
 		if (user.length > 15) {
-			setMessage("name must be shorter than 15 characters.");
+			showWarning("name must be shorter than 15 characters.");
 			return;
 		}
 		if (!/(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+/.test(user)) {
-			setMessage("name must contain at least one letter and number.")
+			showWarning("name must contain at least one letter and number.")
 			return;
 		}
 		// TODO : duptest
 		
 		/* password validation */
 		if (pass.length < 8) {
-			setMessage("password must be longer than 8 characters.");
+			showWarning("password must be longer than 8 characters.");
 			return;
 		}
 		if (pass.length > 20) {
-			setMessage("password must be shorter than 20 characters.");
+			showWarning("password must be shorter than 20 characters.");
 			return;
 		}
 		if (!/(?=.*[!@#$%^&*()_+{}:;<>,.?~\\-])(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+{}:;<>,.?~\\-]+/.test(pass)) {
-			setMessage("password must contain at least one special character, letter, and number.")
+			showWarning("password must contain at least one special character, letter, and number.")
 			return;
 		}
 		
 		/* email validation */
 		if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
-			setMessage("Not a valid format email address.");
+			showWarning("Not a valid format email address.");
 			return;
 		}
 	}
@@ -90,7 +99,7 @@ export default function RegisterContainer () {
 				</div>
 				<div className="submit" onClick={handleButtonClick} />
 			</RegisterForm>
-			<div>{message}</div>
+			<div className="warning hidden" ref={warningRef}>{warning}</div>
 		</RegisterContainerBox>
 	);
 }
@@ -98,6 +107,38 @@ export default function RegisterContainer () {
 const RegisterContainerBox = styled.div`
 	height: calc(100vh - 203px);
 	background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .2));
+	
+	.warning {
+		box-sizing: border-box;
+		width: fit-content;
+		max-width: 500px;
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 40px;
+		color: #fff;
+		margin: 100px auto 0;
+		padding: 10px 10px 10px 35px;
+		background: rgba(255, 0, 0, 0.5);
+		border-radius: 5px;
+		transition: .5s opacity;
+		&::before {
+			content: "!";
+			position: absolute;
+			color: #fff;
+			text-align: center;
+			top: .5em;
+			left: 10px;
+			width: 15px;
+			height: 15px;
+			display: block;
+			border: solid 2px #fff;
+			border-radius: 10px;
+		}
+		&.hidden {
+			opacity: 0;
+		}
+	}
 `;
 const RegisterForm = styled.form`
 	width: 250px;

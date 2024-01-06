@@ -10,7 +10,7 @@ export default function ServiceMenu () {
 				<img src={sign_in_icon} alt='sign in' />
 				SIGN IN
 			</Menu>
-			<Menu>
+			<Menu href='/auth/register'>
 				<img src={sign_up_icon} alt='sign up' />
 				SIGN UP
 			</Menu>

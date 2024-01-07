@@ -43,31 +43,31 @@ export default function RegisterContainer () {
 		
 		/* username validation */
 		if (user.length < 5) {
-			showWarning("name must be longer than 5 characters.");
+			showWarning("Name must be longer than 5 characters.");
 			
 			return;
 		}
 		if (user.length > 15) {
-			showWarning("name must be shorter than 15 characters.");
+			showWarning("Name must be shorter than 15 characters.");
 			return;
 		}
 		if (!/(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+/.test(user)) {
-			showWarning("name must contain at least one letter and number.")
+			showWarning("Name must contain at least one letter and number.")
 			return;
 		}
 		// TODO : duptest
 		
 		/* password validation */
 		if (pass.length < 8) {
-			showWarning("password must be longer than 8 characters.");
+			showWarning("Password must be longer than 8 characters.");
 			return;
 		}
 		if (pass.length > 20) {
-			showWarning("password must be shorter than 20 characters.");
+			showWarning("Password must be shorter than 20 characters.");
 			return;
 		}
 		if (!/(?=.*[!@#$%^&*()_+{}:;<>,.?~\\-])(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+{}:;<>,.?~\\-]+/.test(pass)) {
-			showWarning("password must contain at least one special character, letter, and number.")
+			showWarning("Password must contain at least one special character, letter, and number.");
 			return;
 		}
 		
@@ -76,6 +76,14 @@ export default function RegisterContainer () {
 			showWarning("Not a valid format email address.");
 			return;
 		}
+		
+		/* phone validation */
+		if (!/[0-9]{3}-[0-9]{4}-[0-9]{4}/.test(phone)) {
+			showWarning("Please fill in the phone number that matches the form (e.g. 010-0000-0000)");
+		}
+		
+		/* gender validation */
+		gender ?? showWarning("Please check the box that matches your gender");
 	}
 	
 	return (
@@ -91,7 +99,7 @@ export default function RegisterContainer () {
 				<p className="label">phone</p>
 				<input className="register-input" type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="010-0000-0000" onChange={e=>setPhone(e.target.value)} />
 				<p className="label">birth</p>
-				<input className="register-input" type="date" onChange={e=>setBirth(e.target.value)} />
+				<input className="register-input" type="date" onChange={e=>setBirth(e.target.value)} max={new Date().toISOString().split('T')[0]} min="1900-01-01" />
 				<p className="label">gender</p>
 				<div>
 					<span className="gender-label" tabIndex="0" onFocus={handleGenderFocus}>male</span>

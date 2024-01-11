@@ -1,0 +1,6 @@
+{
+    "baseURL": "https://fake-cgv-server-iizhi.run.goorm.site",
+    "main": "/",
+    "signin": "/auth/signin",
+    "register": "/auth/register"
+}

@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { useState, useRef } from 'react';
 import submitImg from '../resource/image/submit-button.png';
 import calendarImg from '../resource/image/calendar_icon.png';
+import axios from 'axios';
+import url from '../resource/string/url.json';
+import getCookie from '../module/getCookie';
 
 export default function RegisterContainer () {
 
@@ -34,12 +37,12 @@ export default function RegisterContainer () {
 	};
 	
 	const handleButtonClick = e => {
-		console.log(user);
-		console.log(pass);
-		console.log(email);
-		console.log(phone);
-		console.log(birth);
-		console.log(gender);
+		// console.log(user);
+		// console.log(pass);
+		// console.log(email);
+		// console.log(phone);
+		// console.log(birth);
+		// console.log(gender);
 		
 		/* username validation */
 		if (user.length < 5) {
@@ -84,6 +87,32 @@ export default function RegisterContainer () {
 		
 		/* gender validation */
 		gender ?? showWarning("Please check the box that matches your gender");
+		
+		/* register request */
+		axios({
+			url: url.register,
+			method: 'post',
+			baseURL: url.baseURL,
+			headers:{
+				'accessToken': getCookie('accessToken'),
+				'refreshToken': getCookie('refreshToken')
+			},
+			data: {
+				"username": user,
+				"password": pass,
+				"email": email,
+				"phone": phone,
+				"birthday": birth,
+				"gender": gender
+			},
+			timeout: 1000,
+		})
+		.then(res => {
+			console.log(res);
+		})
+		.catch(error => {
+			console.log(error);
+		});
 	}
 	
 	return (

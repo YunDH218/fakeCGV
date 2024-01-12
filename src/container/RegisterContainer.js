@@ -2,13 +2,15 @@ import styled from 'styled-components';
 import { useState, useRef } from 'react';
 import submitImg from '../resource/image/submit-button.png';
 import calendarImg from '../resource/image/calendar_icon.png';
-import axios from 'axios';
+import welcomeImg from '../resource/image/welcome_message.png';
+import axiosInstance from '../module/axiosInstance';
 import url from '../resource/string/url.json';
-import getCookie from '../module/getCookie';
 
 export default function RegisterContainer () {
 
 	const warningRef = useRef(null);
+	const formRef = useRef(null);
+	const welcomeRef = useRef(null);
 	
 	const [user, setUser] = useState("");
 	const [pass, setPass] = useState("");
@@ -37,17 +39,10 @@ export default function RegisterContainer () {
 	};
 	
 	const handleButtonClick = e => {
-		// console.log(user);
-		// console.log(pass);
-		// console.log(email);
-		// console.log(phone);
-		// console.log(birth);
-		// console.log(gender);
 		
 		/* username validation */
 		if (user.length < 5) {
 			showWarning("Name must be longer than 5 characters.");
-			
 			return;
 		}
 		if (user.length > 15) {
@@ -89,14 +84,9 @@ export default function RegisterContainer () {
 		gender ?? showWarning("Please check the box that matches your gender");
 		
 		/* register request */
-		axios({
+		axiosInstance({
 			url: url.register,
 			method: 'post',
-			baseURL: url.baseURL,
-			headers:{
-				'accessToken': getCookie('accessToken'),
-				'refreshToken': getCookie('refreshToken')
-			},
 			data: {
 				"username": user,
 				"password": pass,
@@ -104,20 +94,26 @@ export default function RegisterContainer () {
 				"phone": phone,
 				"birthday": birth,
 				"gender": gender
-			},
-			timeout: 1000,
+			}
 		})
 		.then(res => {
-			console.log(res);
+			formRef.current.classList.add("success");
+			welcomeRef.current.classList.remove("hidden");
+			setTimeout(()=>{
+				window.location.replace(url.signin);
+			}, 3000);
 		})
 		.catch(error => {
-			console.log(error);
+			showWarning(error?.response?.data);
 		});
 	}
 	
 	return (
 		<RegisterContainerBox>
-			<RegisterForm>
+			<WelcomeBox ref={welcomeRef} className="hidden">
+				<img src={welcomeImg} alt="Welcome to CGV"/>
+			</WelcomeBox>
+			<RegisterForm ref={formRef}>
 				<div className="welcome">welcome</div>
 				<p className="label">name</p>
 				<input className="register-input" type="text" placeholder="5~15 characters" onChange={e=>setUser(e.target.value)} />
@@ -180,6 +176,8 @@ const RegisterContainerBox = styled.div`
 const RegisterForm = styled.form`
 	width: 250px;
 	height: 600px;
+	position: relative;
+	top: 0;
 	color: #fff;
 	margin: 40px auto 0;
 	background: linear-gradient(160deg, #F8DE77, #F94C10 40%, #C70039 70%, #900C3F 100%);
@@ -187,6 +185,7 @@ const RegisterForm = styled.form`
 	box-sizing: border-box;
 	overflow: hidden;
 	padding: 0 15px;
+	transition: opacity .5s ease-in, top .75s ease-in;
 	
 	.welcome {
 		text-transform: uppercase;
@@ -259,5 +258,25 @@ const RegisterForm = styled.form`
 		color: rgba(0, 0, 0, 0);
 		cursor: pointer;
 		background: url(${submitImg}) no-repeat;
+	}
+	
+	&.success {
+		top: 100px;
+		opacity: 0;
+	}
+`;
+
+const WelcomeBox = styled.div`
+	position: absolute;
+	width: fit-content;
+	height: fit-content;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	transition: 1s 1s;
+	&.hidden {
+		opacity: 0;
 	}
 `;

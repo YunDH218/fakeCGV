@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import {useState} from 'react';
 import ID_before from '../resource/image/ID_before.png';
 import PW_before from '../resource/image/PW_before.png';
+import axiosInstance from '../module/axiosInstance';
+import url from '../resource/string/url.json';
 
 // reference : https://velog.io/@defaultkyle/react-cookie
 
@@ -15,7 +17,7 @@ export default function SignInContainer () {
 	const [PW, setPW] = useState("");
 	
 	const handleIDChange = e => { setID(e.target.value); }
-	const handlePWChange = e => {	setPW(e.target.value); }
+	const handlePWChange = e => { setPW(e.target.value); }
 	
 	const handleButtonClick = e => {
 		if (PW.length === 0) setInfo({
@@ -26,7 +28,21 @@ export default function SignInContainer () {
 			color: "#f00",
 			text: "Please enter your ID first."
 		});
-		
+		axiosInstance({
+			url: url.signin,
+			method: 'post',
+			data: {
+				"username": ID,
+				"password": PW
+			}
+		})
+		.then(res => {
+			
+			window.location.replace(url.main);
+		})
+		.catch(error => {
+			setInfo(error?.response?.data);
+		})
 	}
 	
 	return (

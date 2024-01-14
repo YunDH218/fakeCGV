@@ -3,7 +3,7 @@ import { useState, useRef } from 'react';
 import submitImg from '../resource/image/submit-button.png';
 import calendarImg from '../resource/image/calendar_icon.png';
 import welcomeImg from '../resource/image/welcome_message.png';
-import axiosInstance from '../module/axiosInstance';
+import axiosInstance from '../util/axiosInstance';
 import url from '../resource/string/url.json';
 
 export default function RegisterContainer () {

@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import {useState} from 'react';
 import ID_before from '../resource/image/ID_before.png';
 import PW_before from '../resource/image/PW_before.png';
-import axiosInstance from '../module/axiosInstance';
+import axiosInstance from '../util/axiosInstance';
+import { useCookies } from 'react-cookie';
 import url from '../resource/string/url.json';
 
 // reference : https://velog.io/@defaultkyle/react-cookie
@@ -16,18 +17,26 @@ export default function SignInContainer () {
 	const [ID, setID] = useState("");
 	const [PW, setPW] = useState("");
 	
+	const [, setCookie] = useCookies(['accessToken', 'refreshToken']);
+	
 	const handleIDChange = e => { setID(e.target.value); }
 	const handlePWChange = e => { setPW(e.target.value); }
 	
 	const handleButtonClick = e => {
-		if (PW.length === 0) setInfo({
+		if (PW.length === 0) {
+			setInfo({
 			color: "#f00",
 			text: "Please enter your password first."
-		});
-		if (ID.length === 0) setInfo({
-			color: "#f00",
-			text: "Please enter your ID first."
-		});
+			});
+			return;
+		};
+		if (ID.length === 0) {
+			setInfo({
+				color: "#f00",
+				text: "Please enter your ID first."
+			});
+			return;
+		}
 		axiosInstance({
 			url: url.signin,
 			method: 'post',
@@ -36,12 +45,17 @@ export default function SignInContainer () {
 				"password": PW
 			}
 		})
-		.then(res => {
-			
+		.then(async res => {
+			setCookie('accessToken', res.data.accessToken, {path: '/'});
+			setCookie('refreshToken', res.data.refreshToken, {path: '/'});
 			window.location.replace(url.main);
 		})
 		.catch(error => {
-			setInfo(error?.response?.data);
+			console.log(error)
+			setInfo({
+				color: "#f00",
+				text: error?.response?.data
+			});
 		})
 	}
 	
@@ -49,7 +63,7 @@ export default function SignInContainer () {
 		<SignInContainerBox>
 			<p className="info" style={{color: info.color}}>{info.text}</p>
 			<input className="id-input" type="text" onChange={handleIDChange} />
-			<input className="pw-input" type="password" onChange={handlePWChange} />
+			<input className="pw-input" type="password" onChange={handlePWChange} onKeyPress={(e) => { if (e.key==="Enter") handleButtonClick(e) }} />
 			<div className="submit-button" onClick={handleButtonClick}></div>
 			<p><input id="StaySignedIn" type="checkbox" /><label htmlFor="StaySignedIn">Stay Signed in</label></p>
 			<p>Forgot your <a href="/">password</a> or <a href="/">username</a>?</p>

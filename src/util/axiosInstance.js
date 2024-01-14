@@ -1,6 +1,6 @@
 import axios from "axios";
 import url from "../resource/string/url.json";
-import getCookie from "./getCookie";
+import { getCookie } from "./cookiesUtil";
 
 const axiosInstance = axios.create({
 	baseURL: url.baseURL,

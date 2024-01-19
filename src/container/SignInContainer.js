@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import {useState} from 'react';
-import ID_before from '../resource/image/ID_before.png';
-import PW_before from '../resource/image/PW_before.png';
+import Images from '../resource/image/Images.png';
 import axiosInstance from '../util/axiosInstance';
 import { useCookies } from 'react-cookie';
 import url from '../resource/string/url.json';
@@ -94,11 +93,11 @@ const SignInContainerBox = styled.div`
 	}
 	
 	.id-input {
-		background: url(${ID_before}) 10px 10px no-repeat;
+		background: url(${Images}) 0 -120px no-repeat;
 	}
 	
 	.pw-input {
-		background: url(${PW_before}) 10px 10px no-repeat;
+		background: url(${Images}) 0 -157px no-repeat;
 	}
 	
 	.submit-button {

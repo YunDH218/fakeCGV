@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { useState, useRef } from 'react';
-import submitImg from '../resource/image/submit-button.png';
-import calendarImg from '../resource/image/calendar_icon.png';
-import welcomeImg from '../resource/image/welcome_message.png';
+import Images from '../resource/image/Images.png';
 import axiosInstance from '../util/axiosInstance';
 import url from '../resource/string/url.json';
 
@@ -110,9 +108,7 @@ export default function RegisterContainer () {
 	
 	return (
 		<RegisterContainerBox>
-			<WelcomeBox ref={welcomeRef} className="hidden">
-				<img src={welcomeImg} alt="Welcome to CGV"/>
-			</WelcomeBox>
+			<WelcomeBox ref={welcomeRef} className="hidden" />
 			<RegisterForm ref={formRef}>
 				<div className="welcome">welcome</div>
 				<p className="label">name</p>
@@ -225,7 +221,7 @@ const RegisterForm = styled.form`
   		font:small-caption;
 		}
 		&[type="date"]::-webkit-calendar-picker-indicator {
-			background: url(${calendarImg}) 0 2px no-repeat;
+			background: url(${Images}) -80px -90px no-repeat;
 		}
 	}
 	
@@ -257,7 +253,7 @@ const RegisterForm = styled.form`
 		border: none;
 		color: rgba(0, 0, 0, 0);
 		cursor: pointer;
-		background: url(${submitImg}) no-repeat;
+		background: url(${Images}) 0 -300px;
 	}
 	
 	&.success {
@@ -268,13 +264,14 @@ const RegisterForm = styled.form`
 
 const WelcomeBox = styled.div`
 	position: absolute;
-	width: fit-content;
-	height: fit-content;
+	width: 517px;
+	height: 75px;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
 	margin: auto;
+	background: url(${Images}) -300px 0;
 	transition: 1s 1s;
 	&.hidden {
 		opacity: 0;

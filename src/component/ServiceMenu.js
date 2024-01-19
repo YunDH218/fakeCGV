@@ -3,10 +3,7 @@ import { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import axiosInstance from '../util/axiosInstance';
 import { getCookie } from '../util/cookiesUtil';
-import sign_in_icon from '../resource/image/sign_in_icon.png';
-import sign_out_icon from '../resource/image/sign_out_icon.png';
-import sign_up_icon from '../resource/image/sign_up_icon.png';
-import my_page_icon from '../resource/image/my_page_icon.png';
+import Images from '../resource/image/Images.png';
 import url from '../resource/string/url.json';
 
 export default function ServiceMenu () {
@@ -41,22 +38,22 @@ export default function ServiceMenu () {
 		<ServiceMenuBox>
 			{
 				isLoggedin ? 
-					<Menu onClick={handleSignOutClick}>
-						<img src={sign_out_icon} alt='sign out' />
+					<Menu onClick={handleSignOutClick} className="signout">
+						<div />
 						SIGN OUT
 					</Menu>
 				:
-					<Menu href='/auth/signin'>
-						<img src={sign_in_icon} alt='sign in' />
+					<Menu href='/auth/signin' className="signin">
+						<div />
 						SIGN IN
 					</Menu>
 			}
-			<Menu href='/auth/register'>
-				<img src={sign_up_icon} alt='sign up' />
+			<Menu href='/auth/register' className="signup">
+				<div />
 				SIGN UP
 			</Menu>
-			<Menu>
-				<img src={my_page_icon} alt='my page' />
+			<Menu className="mypage">
+				<div />
 				MY PAGE
 			</Menu>
 		</ServiceMenuBox>
@@ -77,7 +74,19 @@ const Menu = styled.a`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	img {
+	&.signout div {
+		background: url(${Images}) -36px -50px;
+	}
+	&.signin div {
+		background: url(${Images}) 0 -50px;
+	}
+	&.signup div {
+		background: url(${Images}) -72px -50px;
+	}
+	&.mypage div {
+		background: url(${Images}) -108px -50px;
+	}
+	div {
 		width: 36px;
 		height: 36px;
 	}

@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import ServiceMenu from '../component/ServiceMenu';
 import Submenu from '../component/Submenu';
 import Wrapper from '../component/Wrapper';
-import logo from '../resource/image/logo.svg';
+import Images from '../resource/image/Images.png';
 
 export default function HeaderContainer () {
 	return (
 		<HeaderContainerBox>
 			<TopWrapper>
-				<a href='/'><Logo src={logo} alt='FAKE CGV' /></a>
+				<a href='/'><Logo /></a>
 				<ServiceMenu />
 			</TopWrapper>
 			<Divider />
@@ -40,6 +40,8 @@ const Divider = styled.div`
 	border-bottom: 1px solid #eee;
 `
 
-const Logo = styled.img`
+const Logo = styled.div`
+	width: 101px;
 	height: 50px;
+	background: url(${Images}) 0 0;
 `;

@@ -4,8 +4,7 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import Wrapper from '../component/Wrapper';
-import leftArrow from '../resource/image/left_arrow.png';
-import rightArrow from '../resource/image/right_arrow.png';
+import Images from '../resource/image/Images.png';
 
 export default function MovieChartContainer () {
 	return (
@@ -46,15 +45,13 @@ const MovieChartContainerBox = styled(Wrapper)`
 			border-radius: 20px;
 			box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 			background-color: rgba(255, 255, 255, .8);
-			background-image: url(${leftArrow});
-			background-repeat: no-repeat;
-			background-position: center;
-			background-size: 9px 13px;
+			background-image: url(${Images});
+			background-position: 0 -86px;
 		}
 	}
 	.swiper-button-next {
 		&::after {
-			background-image: url(${rightArrow});
+			background-position: -36px -86px;
 		}
 	}
 `

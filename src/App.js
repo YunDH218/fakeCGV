@@ -1,5 +1,6 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import MainPage from './page/MainPage';
+import MoviePage from './page/MoviePage';
 import SignInContainer from './container/SignInContainer';
 import HeaderContainer from './container/HeaderContainer';
 import RegisterContainer from './container/RegisterContainer';
@@ -15,6 +16,7 @@ function App() {
 						<Route path='/auth/signin' element={<SignInContainer />}></Route>
 						<Route path='/auth/register' element={<RegisterContainer />}></Route>
 					</Route>
+					<Route path='/movie' element={<MoviePage />}></Route>
 				</Routes>
 			</BrowserRouter>
     </div>

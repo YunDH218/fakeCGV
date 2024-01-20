@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export default function Submenu () {
 	return (
 		<div>
-			<Menu href='/'>movie</Menu>
+			<Menu href='/movie'>movie</Menu>
 			<Menu href='/'>theater</Menu>
 			<Menu href='/' className='highlight'>ticketing</Menu>
 			<Menu href='/'>event</Menu>

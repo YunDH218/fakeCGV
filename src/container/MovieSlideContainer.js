@@ -4,9 +4,10 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import Wrapper from '../component/Wrapper';
+import MovieTile from '../component/MovieTile';
 import Images from '../resource/image/Images.png';
 
-export default function MovieChartContainer () {
+export default function MovieSlideContainer () {
 	return (
 		<MovieChartContainerBox>
 			<p className="title">MOVIE CHART</p>
@@ -15,14 +16,14 @@ export default function MovieChartContainer () {
 				slidesPerView={5}
 				navigation
 			>
-				<SwiperSlide><MovieTile /></SwiperSlide>
-				<SwiperSlide><MovieTile /></SwiperSlide>
-				<SwiperSlide><MovieTile /></SwiperSlide>
-				<SwiperSlide><MovieTile /></SwiperSlide>
-				<SwiperSlide><MovieTile /></SwiperSlide>
-				<SwiperSlide><MovieTile /></SwiperSlide>
-				<SwiperSlide><MovieTile /></SwiperSlide>
-				<SwiperSlide><MovieTile /></SwiperSlide>
+				<SwiperSlide><MovieTile noRank /></SwiperSlide>
+				<SwiperSlide><MovieTile noRank /></SwiperSlide>
+				<SwiperSlide><MovieTile noRank /></SwiperSlide>
+				<SwiperSlide><MovieTile noRank /></SwiperSlide>
+				<SwiperSlide><MovieTile noRank /></SwiperSlide>
+				<SwiperSlide><MovieTile noRank /></SwiperSlide>
+				<SwiperSlide><MovieTile noRank /></SwiperSlide>
+				<SwiperSlide><MovieTile noRank /></SwiperSlide>
 			</Swiper>
 		</MovieChartContainerBox>
 	);
@@ -54,11 +55,12 @@ const MovieChartContainerBox = styled(Wrapper)`
 			background-position: -36px -86px;
 		}
 	}
-`
-const MovieTile = styled.div`
-	width: 170px;
-	height: 234px;
-	margin: 0 auto;
-	background-color: #d9d9d9;
-	border-radius: 10px;
-`
+`;
+
+//	const MovieTile = styled.div`
+//	width: 170px;
+//	height: 234px;
+//	margin: 0 auto;
+//	background-color: #d9d9d9;
+//	border-radius: 10px;
+//`;

@@ -16,6 +16,7 @@ export default function MovieContainer() {
         	<MovieTiles>
         	    {movieList.map(movie =>
         	        <MovieTile
+        	            key={movie.movieid}
         	            title={movie.title}
         	            poster={movie.poster}
                         onBtnInfoClick={e => { setOpenModal(true); setSelectedMovie(movie); }}
@@ -25,7 +26,7 @@ export default function MovieContainer() {
             </MovieTiles>
             {openModal && 
                 <PopUp handleCloseButton={e => { setOpenModal(false) }}>
-                    <MovieInfo movie={selectedMovie} />
+                    <MovieInfo movie={selectedMovie} onBtnTicketClick={ e => {console.log('to ticket')} } />
                 </PopUp>
             }
         </MovieContainerBox>

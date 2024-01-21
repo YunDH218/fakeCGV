@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Button from './Button';
 import Images from '../resource/image/Images.png';
 
 const MovieTile = props =>
@@ -7,8 +8,8 @@ const MovieTile = props =>
         <div className='title'>{props.title}</div>
         { props.noRank || <div className='rank' /> }
         <div className='button-group'>
-	        <div className='button' onClick={props.onBtnInfoClick}>Movie Info</div>
-	        <div className='button' onClick={props.onBtnTicketClick}>Buy Ticket</div>
+	        <Button onClick={props.onBtnInfoClick}>Movie Info</Button>
+	        <Button onClick={props.onBtnTicketClick}>Buy Ticket</Button>
         </div>
     </MovieTileBox>
 
@@ -47,24 +48,6 @@ const MovieTileBox = styled.div`
         transition: .5s;
         visibility: hidden;
         opacity: 0;
-        .button {
-            width: 120px;
-            height: 40px;
-            color: #ec6d6d;
-            text-align: center;
-            padding-top: 8px;
-            border: solid 2px #ec6d6d;
-            border-radius: 10px;
-            box-sizing: border-box;
-            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-            transition: .5s;
-            cursor: pointer;
-            &:hover {
-                background: #ec6d6d;
-                color: #ffffff;
-                border: solid 2px rgba(255, 0, 0, 0);
-            }
-        }
     }
     &:hover {
         .poster {

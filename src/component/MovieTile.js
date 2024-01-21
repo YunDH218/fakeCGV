@@ -3,7 +3,7 @@ import Images from '../resource/image/Images.png';
 
 const MovieTile = props =>
     <MovieTileBox>
-        <img className='poster' src={props.poster} alt={props.title}/>
+        <img className='poster' loading='lazy' src={props.poster} alt={props.title}/>
         <div className='title'>{props.title}</div>
         { props.noRank || <div className='rank' /> }
         <div className='button-group'>

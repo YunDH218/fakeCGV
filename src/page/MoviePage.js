@@ -1,27 +1,33 @@
+import { useState } from 'react';
 import styled from 'styled-components';
-import Wrapper from '../component/Wrapper';
+import MovieInfo from '../component/MovieInfo';
 import MovieTile from '../component/MovieTile';
+import Wrapper from '../component/Wrapper';
+import PopUp from '../component/PopUp';
+import movieList from '../resource/string/movieList.json';
 
 export default function MovieContainer() {
+    const [openModal, setOpenModal] = useState(false);
+    const [selectedMovie, setSelectedMovie] = useState(null);
+    
     return (
         <MovieContainerBox>
         	<p className="title">MOVIE CHART</p>
         	<MovieTiles>
-                <MovieTile
-                    title='Seoul-ui bom'
-                    poster='https://url.kr/ti3goc'
-                    onBtnInfoClick={ e => {console.log('show info')} }
-                    onBtnTicketClick={ e => {console.log('to ticket')} }
-                />
-                <MovieTile
-                    title='Elemental'
-                    poster='https://url.kr/jd5fsz'
-                />
-                <MovieTile
-                    title='Wish'
-                    poster='https://url.kr/dawsqp'
-                />
+        	    {movieList.map(movie =>
+        	        <MovieTile
+        	            title={movie.title}
+        	            poster={movie.poster}
+                        onBtnInfoClick={e => { setOpenModal(true); setSelectedMovie(movie); }}
+                        onBtnTicketClick={ e => {console.log('to ticket')} }
+        	        />
+        	    )}
             </MovieTiles>
+            {openModal && 
+                <PopUp handleCloseButton={e => { setOpenModal(false) }}>
+                    <MovieInfo movie={selectedMovie} />
+                </PopUp>
+            }
         </MovieContainerBox>
     );
 }

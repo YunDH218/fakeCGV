@@ -221,6 +221,8 @@ const RegisterForm = styled.form`
   		font:small-caption;
 		}
 		&[type="date"]::-webkit-calendar-picker-indicator {
+			width: 14px;
+			height: 15px;
 			background: url(${Images}) -80px -90px no-repeat;
 		}
 	}

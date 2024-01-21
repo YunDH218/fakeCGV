@@ -1,0 +1,35 @@
+[
+    {
+        "movieid": 1,
+        "title": "12.12: THE DAY",
+        "genre": ["Drama", "History", "Mystery & thriller"],
+        "poster": "https://url.kr/ti3goc",
+        "director": ["Sung-soo Kim"],
+        "stars": ["Hwang Jung-min", "Jung Woo-sung", "Lee Sung-min"],
+        "runtime": "1h 41m",
+        "releasedate": "2023-11-23",
+        "description": "Following the assassination of President Park in 1979, various military factions wrestle for control during a violent coup in this tense South Korean period action drama."
+    },
+    {
+        "movieid": 2,
+        "title": "Elemental",
+        "genre": ["Kids & family", "Comedy", "Fantasy", "Animation"],
+        "poster": "https://url.kr/jd5fsz",
+        "director": ["Peter Sohn"],
+        "stars": ["Leah Lewis", "Mamoudou Athie"],
+        "runtime": "1h 43m",
+        "releasedate": "2023-06-16",
+        "description": "Disney and Pixar's Elemental, an all-new, original feature film set in Element City, where fire-, water-, land- and air-residents live together. The story introduces Ember, a tough, quick-witted and fiery young woman, whose friendship with a fun, sappy, go-with-the-flow guy named Wade challenges her beliefs about the world they live in."
+    },
+    {
+        "movieid": 3,
+        "title": "Wish",
+        "genre": ["Kids & family", "Fantasy", "Adventure", "Comedy", "Animation", "Musical"],
+        "poster": "https://url.kr/dawsqp",
+        "director": ["Chris Buck", "Fawn Veerasunthorn"],
+        "stars": ["Chris Pine", "Ariana DeBose", "Alan Tudyk"],
+        "runtime": "1h 32m",
+        "releasedate": "2023-11-22",
+        "description": "Walt Disney Animation Studios' Wish is an all-new musical-comedy welcoming audiences to the magical kingdom of Rosas, where Asha, a sharp-witted idealist, makes a wish so powerful that it is answered by a cosmic force--a little ball of boundless energy called Star"
+    }
+]

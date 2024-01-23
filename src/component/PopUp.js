@@ -3,12 +3,13 @@ import Images from '../resource/image/Images.png';
 
 const PopUp = props => {
     return (
-        <Dimmer>
+        <div>
+            <Dimmer onClick={ props.handleCloseButton } />
             <PopUpBox>
-                <div className='close-button' onClick={ props.handleCloseButton }/>
+                <div className='close-button' title="Back" onClick={ props.handleCloseButton }/>
                 { props.children }
             </PopUpBox>
-        </Dimmer>
+        </div>
     );
 }
 

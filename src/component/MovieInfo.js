@@ -12,7 +12,7 @@ const MovieInfo = props => {
             <img className='poster' src={props?.movie?.poster} alt={props?.movie?.title} />
             <div className='genre-list'>{
                 props?.movie?.genre?.map((genre, key) => 
-                    <div className='genre' key={key}>{genre}</div>
+                    <div className='genre' title={`search "#${genre}"`} key={key}>{genre}</div>
                 )
             }</div>
             <span className='label'>Director : </span>{props?.movie?.director?.join(', ')}<br />
@@ -72,6 +72,13 @@ const InfoBox = styled.div`
             border: solid 2px #888;
             border-radius: 15px;
             box-sizing: border-box;
+            cursor: pointer;
+            transition: .5s;
+            
+            &:hover {
+                color: #fff;
+                background: #888;
+            }
         }
     }
     .label {

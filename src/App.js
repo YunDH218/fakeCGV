@@ -4,7 +4,6 @@ import MoviePage from './page/MoviePage';
 import SignInContainer from './container/SignInContainer';
 import HeaderContainer from './container/HeaderContainer';
 import RegisterContainer from './container/RegisterContainer';
-import PopUp from './component/PopUp';
 
 function App() {
   return (
@@ -16,9 +15,7 @@ function App() {
 						<Route path='/auth/signin' element={<SignInContainer />}></Route>
 						<Route path='/auth/register' element={<RegisterContainer />}></Route>
 					</Route>
-					<Route path='/movie' element={<MoviePage />}>
-						<Route path=':moviename' element={<PopUp/>}></Route>
-					</Route>
+					<Route path='/movie' element={<MoviePage />}></Route>
 				</Routes>
     </div>
   );

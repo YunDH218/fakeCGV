@@ -11,7 +11,7 @@ export default function MovieSlideContainer () {
 	return (
 		<MovieChartContainerBox>
 			<p className="title">MOVIE CHART</p>
-			<Swiper
+			<SwiperWithPadding
 				modules={[Navigation]}
 				slidesPerView={5}
 				navigation
@@ -24,7 +24,7 @@ export default function MovieSlideContainer () {
 				<SwiperSlide><MovieTile noRank /></SwiperSlide>
 				<SwiperSlide><MovieTile noRank /></SwiperSlide>
 				<SwiperSlide><MovieTile noRank /></SwiperSlide>
-			</Swiper>
+			</SwiperWithPadding>
 		</MovieChartContainerBox>
 	);
 }
@@ -57,10 +57,6 @@ const MovieChartContainerBox = styled(Wrapper)`
 	}
 `;
 
-//	const MovieTile = styled.div`
-//	width: 170px;
-//	height: 234px;
-//	margin: 0 auto;
-//	background-color: #d9d9d9;
-//	border-radius: 10px;
-//`;
+const SwiperWithPadding = styled(Swiper)`
+	padding-top: 5px;
+`
